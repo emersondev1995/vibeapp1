@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ModernCreateStoryModal } from "./ModernCreateStoryModal";
-<<<<<<< HEAD
 import { NewMobileStoryCreator } from "./NewMobileStoryCreator";
-=======
-import { MobileCreateStoryModal } from "./MobileCreateStoryModal";
-import { MobileStoryCreator } from "./MobileStoryCreator";
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
 interface ResponsiveCreateStoryModalProps {
   isOpen: boolean;
