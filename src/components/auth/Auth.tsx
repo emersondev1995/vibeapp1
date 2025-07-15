@@ -461,8 +461,6 @@ export function Auth({ onLogin }: AuthProps) {
 
       {/* Slides container - Ocupa toda a altura restante */}
       <div className="flex-1 relative overflow-hidden">
-<<<<<<< HEAD
-=======
         {/* Mobile navigation arrows */}
         <div className="absolute top-1/2 left-0 right-0 z-10 flex justify-between px-4 transform -translate-y-1/2 pointer-events-none">
           <button
@@ -486,8 +484,6 @@ export function Auth({ onLogin }: AuthProps) {
             <ChevronRight className="w-5 h-5 text-blue-600" />
           </button>
         </div>
-
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         <div
           className="flex h-full transition-transform duration-300 ease-in-out"
           style={{ transform: `translateX(-${activeSlide * 100}%)` }}
@@ -496,11 +492,7 @@ export function Auth({ onLogin }: AuthProps) {
           onTouchEnd={handleTouchEnd}
         >
           {/* Slide 1 - Branding - Tela cheia */}
-<<<<<<< HEAD
           <div className="min-w-full h-full flex flex-col justify-center px-6 py-8 relative">
-=======
-          <div className="min-w-full h-full flex flex-col justify-center px-6 py-8">
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
             <div className="text-center space-y-8 max-w-md mx-auto">
               <div className="flex justify-center">
                 <Logo size="lg" showText={true} />
@@ -540,7 +532,6 @@ export function Auth({ onLogin }: AuthProps) {
                 </button>
               </div>
             </div>
-<<<<<<< HEAD
 
             {/* Floating Arrow Button */}
             <button
@@ -549,8 +540,6 @@ export function Auth({ onLogin }: AuthProps) {
             >
               <ChevronRight className="w-6 h-6 text-blue-600" />
             </button>
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
           </div>
 
           {/* Slide 2 - Auth Form - Tela cheia */}
@@ -582,11 +571,7 @@ export function Auth({ onLogin }: AuthProps) {
                       <Logo size="md" showText={false} />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">
-<<<<<<< HEAD
                       {isLogin ? "Bem-vindo!" : "Criar conta"}
-=======
-                      {isLogin ? "Entrar" : "Criar conta"}
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
                     </h3>
                     <p className="text-gray-600 text-sm">
                       {isLogin

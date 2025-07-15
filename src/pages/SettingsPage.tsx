@@ -25,10 +25,6 @@ import {
   Check,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-import { NotificationModal } from "../components/modals/NotificationModal";
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
 interface User {
   id?: number;
@@ -66,15 +62,6 @@ export function SettingsPage({
   const [activeSection, setActiveSection] = useState("profile");
   const [loading, setLoading] = useState(false);
   const [saved, setSaved] = useState(false);
-<<<<<<< HEAD
-  const [showNotificationModal, setShowNotificationModal] = useState(false);
-  const [notificationData, setNotificationData] = useState({
-    type: "success" as "success" | "error" | "warning",
-    title: "",
-    message: "",
-  });
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
   // Profile data
   const [profileData, setProfileData] = useState({
@@ -168,18 +155,6 @@ export function SettingsPage({
       if (response.ok) {
         setSaved(true);
         setTimeout(() => setSaved(false), 2000);
-<<<<<<< HEAD
-
-        // Show success modal
-        setNotificationData({
-          type: "success",
-          title: "Sucesso!",
-          message: "Suas informações de perfil foram atualizadas com sucesso.",
-        });
-        setShowNotificationModal(true);
-
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         if (onUserUpdate) {
           onUserUpdate({
             name: `${profileData.first_name} ${profileData.last_name}`,
@@ -199,18 +174,6 @@ export function SettingsPage({
       }
     } catch (error) {
       console.error("Erro ao salvar perfil:", error);
-<<<<<<< HEAD
-
-      // Show error modal
-      setNotificationData({
-        type: "error",
-        title: "Erro!",
-        message:
-          "Erro ao salvar perfil. Verifique sua conexão e tente novamente.",
-      });
-      setShowNotificationModal(true);
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     } finally {
       setLoading(false);
     }
@@ -277,7 +240,6 @@ export function SettingsPage({
 
   const renderProfileSection = () => (
     <div className="space-y-8">
-      {/* Header */}
       <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">
           Informações do Perfil
@@ -287,40 +249,13 @@ export function SettingsPage({
         </p>
       </div>
 
-      {/* Profile Photo */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-4">Foto do Perfil</h3>
-        <div className="flex items-center space-x-6">
-          <img
-            src={
-              user.avatar ||
-              `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=3B82F6&color=fff`
-            }
-            alt={user.name}
-            className="w-20 h-20 rounded-full object-cover"
-          />
-          <div className="space-y-2">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-              <Camera className="w-4 h-4" />
-              <span>Alterar Foto</span>
-            </button>
-            <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
-              <Trash2 className="w-4 h-4" />
-              <span>Remover</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Basic Info */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-6">
+      <div className="bg-white p-6 rounded-xl shadow-sm border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">
           Informações Básicas
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              <User className="w-4 h-4 inline mr-2" />
               Nome
             </label>
             <input
@@ -386,191 +321,11 @@ export function SettingsPage({
         </div>
       </div>
 
-      {/* Contact Info */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-6">Contato</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <Mail className="w-4 h-4 inline mr-2" />
-              Email
-            </label>
-            <input
-              type="email"
-              value={profileData.email}
-              onChange={(e) =>
-                setProfileData((prev) => ({ ...prev, email: e.target.value }))
-              }
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <Phone className="w-4 h-4 inline mr-2" />
-              Telefone
-            </label>
-            <input
-              type="tel"
-              value={profileData.phone}
-              onChange={(e) =>
-                setProfileData((prev) => ({ ...prev, phone: e.target.value }))
-              }
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <LinkIcon className="w-4 h-4 inline mr-2" />
-              Website
-            </label>
-            <input
-              type="url"
-              value={profileData.website}
-              onChange={(e) =>
-                setProfileData((prev) => ({ ...prev, website: e.target.value }))
-              }
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <MapPin className="w-4 h-4 inline mr-2" />
-              Localização
-            </label>
-            <input
-              type="text"
-              value={profileData.location}
-              onChange={(e) =>
-                setProfileData((prev) => ({
-                  ...prev,
-                  location: e.target.value,
-                }))
-              }
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Bio */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-4">Bio</h3>
-        <textarea
-          value={profileData.bio}
-          onChange={(e) =>
-            setProfileData((prev) => ({ ...prev, bio: e.target.value }))
-          }
-          rows={4}
-          className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-          placeholder="Conte um pouco sobre você..."
-        />
-      </div>
-
-      {/* Additional Info */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-6">
-          Informações Adicionais
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <Briefcase className="w-4 h-4 inline mr-2" />
-              Trabalho
-            </label>
-            <input
-              type="text"
-              value={profileData.work}
-              onChange={(e) =>
-                setProfileData((prev) => ({ ...prev, work: e.target.value }))
-              }
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <GraduationCap className="w-4 h-4 inline mr-2" />
-              Educação
-            </label>
-            <input
-              type="text"
-              value={profileData.education}
-              onChange={(e) =>
-                setProfileData((prev) => ({
-                  ...prev,
-                  education: e.target.value,
-                }))
-              }
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <Calendar className="w-4 h-4 inline mr-2" />
-              Data de Nascimento
-            </label>
-            <input
-              type="date"
-              value={profileData.birth_date}
-              onChange={(e) =>
-                setProfileData((prev) => ({
-                  ...prev,
-                  birth_date: e.target.value,
-                }))
-              }
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Gênero
-            </label>
-            <select
-              value={profileData.gender}
-              onChange={(e) =>
-                setProfileData((prev) => ({ ...prev, gender: e.target.value }))
-              }
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="">Selecione</option>
-              <option value="male">Masculino</option>
-              <option value="female">Feminino</option>
-              <option value="other">Outro</option>
-              <option value="prefer_not_to_say">Prefiro não dizer</option>
-            </select>
-          </div>
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <Heart className="w-4 h-4 inline mr-2" />
-              Status de Relacionamento
-            </label>
-            <select
-              value={profileData.relationship_status}
-              onChange={(e) =>
-                setProfileData((prev) => ({
-                  ...prev,
-                  relationship_status: e.target.value,
-                }))
-              }
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="">Selecione</option>
-              <option value="single">Solteiro(a)</option>
-              <option value="in_relationship">Em um relacionamento</option>
-              <option value="married">Casado(a)</option>
-              <option value="divorced">Divorciado(a)</option>
-              <option value="widowed">Viúvo(a)</option>
-              <option value="complicated">É complicado</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      {/* Save Button */}
       <div className="flex justify-end">
         <button
           onClick={handleSaveProfile}
           disabled={loading}
-          className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-50 transition-colors"
+          className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-6 py-3 rounded-xl font-medium transition-colors"
         >
           {saved ? <Check className="w-5 h-5" /> : <Save className="w-5 h-5" />}
           <span>
@@ -583,7 +338,6 @@ export function SettingsPage({
 
   const renderPrivacySection = () => (
     <div className="space-y-8">
-      {/* Header */}
       <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">
           Configurações de Privacidade
@@ -593,12 +347,11 @@ export function SettingsPage({
         </p>
       </div>
 
-      {/* Profile Visibility */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-6">
+      <div className="bg-white p-6 rounded-xl shadow-sm border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">
           Visibilidade do Perfil
         </h3>
-        <div className="space-y-6">
+        <div className="space-y-4">
           {[
             {
               key: "profile_visibility",
@@ -618,8 +371,8 @@ export function SettingsPage({
           ].map(({ key, label, icon: Icon }) => (
             <div key={key} className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <Icon className="w-5 h-5 text-gray-600" />
-                <span className="text-gray-900">{label}</span>
+                <Icon className="w-5 h-5 text-gray-500" />
+                <span className="text-gray-700">{label}</span>
               </div>
               <select
                 value={privacySettings[key as keyof typeof privacySettings]}
@@ -633,105 +386,18 @@ export function SettingsPage({
               >
                 <option value="public">Público</option>
                 <option value="friends">Amigos</option>
-                <option value="only_me">Apenas eu</option>
+                <option value="private">Apenas eu</option>
               </select>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Interaction Settings */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-6">Interações</h3>
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Users className="w-5 h-5 text-gray-600" />
-              <span className="text-gray-900">Solicitações de amizade</span>
-            </div>
-            <select
-              value={privacySettings.friend_requests}
-              onChange={(e) =>
-                setPrivacySettings((prev) => ({
-                  ...prev,
-                  friend_requests: e.target.value,
-                }))
-              }
-              className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="everyone">Todos</option>
-              <option value="friends_of_friends">Amigos de amigos</option>
-              <option value="no_one">Ninguém</option>
-            </select>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <User className="w-5 h-5 text-gray-600" />
-              <span className="text-gray-900">Marcações em posts</span>
-            </div>
-            <select
-              value={privacySettings.tagging_permission}
-              onChange={(e) =>
-                setPrivacySettings((prev) => ({
-                  ...prev,
-                  tagging_permission: e.target.value,
-                }))
-              }
-              className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="everyone">Todos</option>
-              <option value="friends">Amigos</option>
-              <option value="no_one">Ninguém</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      {/* Contact Info Visibility */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-6">
-          Informações de Contato
-        </h3>
-        <div className="space-y-6">
-          {[
-            { key: "email_visibility", label: "Email", icon: Mail },
-            { key: "phone_visibility", label: "Telefone", icon: Phone },
-            {
-              key: "birth_date_visibility",
-              label: "Data de nascimento",
-              icon: Calendar,
-            },
-          ].map(({ key, label, icon: Icon }) => (
-            <div key={key} className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <Icon className="w-5 h-5 text-gray-600" />
-                <span className="text-gray-900">{label}</span>
-              </div>
-              <select
-                value={privacySettings[key as keyof typeof privacySettings]}
-                onChange={(e) =>
-                  setPrivacySettings((prev) => ({
-                    ...prev,
-                    [key]: e.target.value,
-                  }))
-                }
-                className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                <option value="public">Público</option>
-                <option value="friends">Amigos</option>
-                <option value="private">Privado</option>
-              </select>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Save Button */}
       <div className="flex justify-end">
         <button
           onClick={handleSavePrivacy}
           disabled={loading}
-          className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-50 transition-colors"
+          className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-6 py-3 rounded-xl font-medium transition-colors"
         >
           {saved ? <Check className="w-5 h-5" /> : <Save className="w-5 h-5" />}
           <span>
@@ -744,7 +410,6 @@ export function SettingsPage({
 
   const renderNotificationsSection = () => (
     <div className="space-y-8">
-      {/* Header */}
       <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Notificações</h2>
         <p className="text-gray-600">
@@ -752,9 +417,10 @@ export function SettingsPage({
         </p>
       </div>
 
-      {/* Push Notifications */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-6">Notificações Push</h3>
+      <div className="bg-white p-6 rounded-xl shadow-sm border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          Notificações Push
+        </h3>
         <div className="space-y-4">
           {[
             {
@@ -772,85 +438,35 @@ export function SettingsPage({
               label: "Comentários",
               description: "Quando alguém comenta em seus posts",
             },
-            {
-              key: "reaction_notifications",
-              label: "Reações",
-              description: "Quando alguém reage aos seus posts",
-            },
-            {
-              key: "message_notifications",
-              label: "Mensagens",
-              description: "Quando você recebe uma nova mensagem",
-            },
-            {
-              key: "story_notifications",
-              label: "Stories",
-              description: "Quando amigos postam stories",
-            },
           ].map(({ key, label, description }) => (
             <div key={key} className="flex items-center justify-between">
               <div>
-                <div className="font-medium text-gray-900">{label}</div>
-                <div className="text-sm text-gray-600">{description}</div>
+                <div className="text-gray-700 font-medium">{label}</div>
+                <div className="text-sm text-gray-500">{description}</div>
               </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={
-                    notificationSettings[
-                      key as keyof typeof notificationSettings
-                    ]
-                  }
-                  onChange={(e) =>
-                    setNotificationSettings((prev) => ({
-                      ...prev,
-                      [key]: e.target.checked,
-                    }))
-                  }
-                  className="sr-only peer"
-                />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-              </label>
+              <input
+                type="checkbox"
+                checked={
+                  notificationSettings[key as keyof typeof notificationSettings]
+                }
+                onChange={(e) =>
+                  setNotificationSettings((prev) => ({
+                    ...prev,
+                    [key]: e.target.checked,
+                  }))
+                }
+                className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
+              />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Email Notifications */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-6">
-          Notificações por Email
-        </h3>
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="font-medium text-gray-900">Resumo por email</div>
-            <div className="text-sm text-gray-600">
-              Receba um resumo semanal de atividades
-            </div>
-          </div>
-          <label className="relative inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              checked={notificationSettings.email_notifications}
-              onChange={(e) =>
-                setNotificationSettings((prev) => ({
-                  ...prev,
-                  email_notifications: e.target.checked,
-                }))
-              }
-              className="sr-only peer"
-            />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-          </label>
-        </div>
-      </div>
-
-      {/* Save Button */}
       <div className="flex justify-end">
         <button
           onClick={handleSaveNotifications}
           disabled={loading}
-          className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-50 transition-colors"
+          className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-6 py-3 rounded-xl font-medium transition-colors"
         >
           {saved ? <Check className="w-5 h-5" /> : <Save className="w-5 h-5" />}
           <span>
@@ -863,7 +479,6 @@ export function SettingsPage({
 
   const renderAccountSection = () => (
     <div className="space-y-8">
-      {/* Header */}
       <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">
           Gerenciar Conta
@@ -871,58 +486,50 @@ export function SettingsPage({
         <p className="text-gray-600">Configurações avançadas da sua conta</p>
       </div>
 
-      {/* Password */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-4">Segurança</h3>
+      <div className="bg-white p-6 rounded-xl shadow-sm border">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Segurança</h3>
         <div className="space-y-4">
-          <button className="flex items-center space-x-3 w-full text-left p-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors">
-            <Key className="w-5 h-5 text-gray-600" />
+          <div className="flex items-center justify-between">
             <div>
-              <div className="font-medium text-gray-900">Alterar senha</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-gray-700 font-medium">Alterar senha</div>
+              <div className="text-sm text-gray-500">
                 Última alteração há 3 meses
               </div>
             </div>
-          </button>
+            <button className="text-blue-600 hover:text-blue-700 font-medium">
+              Alterar
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Data Management */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-200">
-        <h3 className="font-semibold text-gray-900 mb-4">Seus Dados</h3>
+      <div className="bg-red-50 p-6 rounded-xl border border-red-200">
+        <h3 className="text-lg font-semibold text-red-900 mb-4">
+          Zona de Perigo
+        </h3>
         <div className="space-y-4">
-          <button className="flex items-center space-x-3 w-full text-left p-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors">
-            <Download className="w-5 h-5 text-gray-600" />
+          <div className="flex items-center justify-between">
             <div>
-              <div className="font-medium text-gray-900">Baixar dados</div>
-              <div className="text-sm text-gray-600">
-                Obtenha uma cópia dos seus dados
+              <div className="text-red-700 font-medium">Desativar conta</div>
+              <div className="text-sm text-red-600">
+                Oculte temporariamente sua conta
               </div>
             </div>
-          </button>
-        </div>
-      </div>
-
-      {/* Danger Zone */}
-      <div className="bg-red-50 rounded-2xl p-6 border border-red-200">
-        <h3 className="font-semibold text-red-900 mb-4">Zona de Perigo</h3>
-        <div className="space-y-4">
-          <button className="flex items-center space-x-3 w-full text-left p-4 border border-red-300 rounded-xl hover:bg-red-100 transition-colors text-red-700">
-            <Trash2 className="w-5 h-5" />
+            <button className="text-red-600 hover:text-red-700 font-medium">
+              Desativar
+            </button>
+          </div>
+          <div className="flex items-center justify-between">
             <div>
-              <div className="font-medium">Desativar conta</div>
-              <div className="text-sm">Oculte temporariamente sua conta</div>
-            </div>
-          </button>
-          <button className="flex items-center space-x-3 w-full text-left p-4 border border-red-300 rounded-xl hover:bg-red-100 transition-colors text-red-700">
-            <Trash2 className="w-5 h-5" />
-            <div>
-              <div className="font-medium">Excluir conta</div>
-              <div className="text-sm">
+              <div className="text-red-700 font-medium">Excluir conta</div>
+              <div className="text-sm text-red-600">
                 Exclua permanentemente sua conta e dados
               </div>
             </div>
-          </button>
+            <button className="text-red-600 hover:text-red-700 font-medium">
+              Excluir
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -930,30 +537,22 @@ export function SettingsPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm border-b sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => navigate("/")}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-              <h1 className="text-xl font-semibold text-gray-900">
-                Configurações
-              </h1>
-            </div>
-          </div>
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="flex items-center space-x-4 mb-8">
+          <button
+            onClick={() => navigate("/")}
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            <ArrowLeft className="w-6 h-6 text-gray-600" />
+          </button>
+          <h1 className="text-3xl font-bold text-gray-900">Configurações</h1>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="lg:grid lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <nav className="space-y-2 sticky top-24">
+            <div className="bg-white rounded-xl shadow-sm border p-2 space-y-1">
               {sections.map((section) => {
                 const Icon = section.icon;
                 return (
@@ -971,11 +570,11 @@ export function SettingsPage({
                   </button>
                 );
               })}
-            </nav>
+            </div>
           </div>
 
           {/* Content */}
-          <div className="lg:col-span-3 mt-8 lg:mt-0">
+          <div className="lg:col-span-3">
             {activeSection === "profile" && renderProfileSection()}
             {activeSection === "privacy" && renderPrivacySection()}
             {activeSection === "notifications" && renderNotificationsSection()}
@@ -1016,18 +615,6 @@ export function SettingsPage({
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-
-      {/* Notification Modal */}
-      <NotificationModal
-        isOpen={showNotificationModal}
-        onClose={() => setShowNotificationModal(false)}
-        type={notificationData.type}
-        title={notificationData.title}
-        message={notificationData.message}
-      />
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     </div>
   );
 }
