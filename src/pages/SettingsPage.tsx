@@ -25,10 +25,6 @@ import {
   Check,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-import { NotificationModal } from "../components/modals/NotificationModal";
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
 interface User {
   id?: number;

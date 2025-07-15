@@ -170,12 +170,8 @@ export function EnhancedProfileHeader({
 
     setIsUploadingAvatar(true);
 
-    const formData = new FormData();
-<<<<<<< HEAD
-    formData.append("file", file);
-=======
+        const formData = new FormData();
     formData.append("avatar", file);
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
     try {
       const response = await fetch("http://localhost:8000/users/me/avatar", {
