@@ -8,13 +8,10 @@ interface ResponsiveCreateStoryModalProps {
   onSubmit: (
     content: string,
     mediaData?: any,
-    storyDuration?: number,
+        storyDuration?: number,
     backgroundColor?: string,
-<<<<<<< HEAD
     privacy?: string,
     overlays?: any[],
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
   ) => void;
   userToken: string;
 }
