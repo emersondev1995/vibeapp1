@@ -15,8 +15,11 @@ import {
   BookOpen,
   Check,
 } from "lucide-react";
+<<<<<<< HEAD
 import { NotificationModal } from "../modals/NotificationModal";
 import { API_BASE_URL } from "../../config/api";
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
 interface User {
   id: number;
@@ -78,12 +81,15 @@ export function EditProfilePage({
     null,
   );
   const [successMessage, setSuccessMessage] = useState("");
+<<<<<<< HEAD
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [notificationData, setNotificationData] = useState({
     type: "success" as "success" | "error" | "warning",
     title: "",
     message: "",
   });
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
   useEffect(() => {
     if (isOpen) {
@@ -100,7 +106,11 @@ export function EditProfilePage({
   const loadUserData = async () => {
     setLoading(true);
     try {
+<<<<<<< HEAD
       const response = await fetch(`${API_BASE_URL}/auth/me`, {
+=======
+      const response = await fetch("http://localhost:8000/auth/me", {
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -137,7 +147,11 @@ export function EditProfilePage({
     setUsernameChecking(true);
     try {
       const response = await fetch(
+<<<<<<< HEAD
         `${API_BASE_URL}/auth/check-username?username=${profileData.username}`,
+=======
+        `http://localhost:8000/auth/check-username?username=${profileData.username}`,
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -241,7 +255,11 @@ export function EditProfilePage({
 
       console.log("Sending profile data:", dataToSend);
 
+<<<<<<< HEAD
       const response = await fetch(`${API_BASE_URL}/profile/`, {
+=======
+      const response = await fetch("http://localhost:8000/profile/", {
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -256,6 +274,7 @@ export function EditProfilePage({
 
         setSuccessMessage("Perfil atualizado com sucesso!");
 
+<<<<<<< HEAD
         // Show success modal
         setNotificationData({
           type: "success",
@@ -264,6 +283,8 @@ export function EditProfilePage({
         });
         setShowNotificationModal(true);
 
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         // Force refresh of parent component MULTIPLE times
         if (onProfileUpdated) {
           await onProfileUpdated();
@@ -288,6 +309,7 @@ export function EditProfilePage({
           });
         } else {
           setErrors({ general: error.detail || "Erro ao salvar perfil" });
+<<<<<<< HEAD
 
           // Show error modal
           setNotificationData({
@@ -296,11 +318,14 @@ export function EditProfilePage({
             message: error.detail || "Erro ao salvar perfil. Tente novamente.",
           });
           setShowNotificationModal(true);
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         }
       }
     } catch (error) {
       console.error("Erro ao salvar perfil:", error);
       setErrors({ general: "Erro ao salvar perfil" });
+<<<<<<< HEAD
 
       // Show error modal
       setNotificationData({
@@ -310,6 +335,8 @@ export function EditProfilePage({
           "Erro ao salvar perfil. Verifique sua conexão e tente novamente.",
       });
       setShowNotificationModal(true);
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     } finally {
       setSaving(false);
     }
@@ -699,6 +726,7 @@ export function EditProfilePage({
           </div>
         )}
       </div>
+<<<<<<< HEAD
 
       {/* Notification Modal */}
       <NotificationModal
@@ -708,6 +736,8 @@ export function EditProfilePage({
         title={notificationData.title}
         message={notificationData.message}
       />
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     </div>
   );
 }

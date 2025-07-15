@@ -779,7 +779,11 @@ async def create_post(post: PostCreate, current_user: User = Depends(get_current
             else:
                 # Se não tem a estrutura esperada, trata como texto simples
                 content_to_save = post.content
+<<<<<<< HEAD
                 print(f"⚠�� Estrutura JSON inválida, salvando como texto: {post.content[:50]}...")
+=======
+                print(f"⚠️ Estrutura JSON inválida, salvando como texto: {post.content[:50]}...")
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         except (json.JSONDecodeError, TypeError) as e:
             # Se não for JSON válido, salva como texto simples
             content_to_save = post.content
@@ -1474,7 +1478,11 @@ async def upload_avatar(file: UploadFile = File(...), current_user: User = Depen
     import uuid
     from pathlib import Path
 
+<<<<<<< HEAD
     # Validar se �� imagem
+=======
+    # Validar se é imagem
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     if not file.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="File must be an image")
 
@@ -1510,6 +1518,7 @@ async def upload_avatar(file: UploadFile = File(...), current_user: User = Depen
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to upload avatar: {str(e)}")
 
+<<<<<<< HEAD
 @app.post("/users/me/avatar")
 async def upload_user_avatar(file: UploadFile = File(...), current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Upload e definir avatar do usuário (endpoint alternativo)"""
@@ -1622,6 +1631,8 @@ async def upload_user_cover_photo(file: UploadFile = File(...), current_user: Us
         print(f"❌ Exception during cover upload: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to upload cover photo: {str(e)}")
 
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 @app.post("/profile/cover")
 async def upload_cover_photo(file: UploadFile = File(...), current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Upload e definir foto de capa do usuário"""
@@ -1715,7 +1726,11 @@ async def delete_post(post_id: int, current_user: User = Depends(get_current_use
 # Stories routes
 @app.post("/stories/", response_model=StoryResponse)
 async def create_story(story: StoryCreate, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+<<<<<<< HEAD
     # Validaç��o especial para vídeos - máximo 25 segundos
+=======
+    # Validação especial para vídeos - máximo 25 segundos
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     if story.media_type == "video" and story.max_duration_seconds > 25:
         raise HTTPException(status_code=400, detail="Video stories cannot exceed 25 seconds")
 
@@ -2131,6 +2146,7 @@ async def update_profile(profile_data: UserProfileUpdate, current_user: User = D
         if existing_user:
             raise HTTPException(status_code=400, detail="Username already taken")
 
+<<<<<<< HEAD
             # Atualizar campos
     for field, value in update_data.items():
         if field == "birth_date":
@@ -2144,6 +2160,10 @@ async def update_profile(profile_data: UserProfileUpdate, current_user: User = D
             elif isinstance(value, str) and not value.strip():
                 # String vazia deve ser convertida para None
                 value = None
+=======
+    # Atualizar campos
+    for field, value in update_data.items():
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         setattr(current_user, field, value)
 
     current_user.updated_at = datetime.utcnow()
@@ -2152,11 +2172,14 @@ async def update_profile(profile_data: UserProfileUpdate, current_user: User = D
 
     return {"message": "Profile updated successfully"}
 
+<<<<<<< HEAD
 @app.put("/settings/profile")
 async def update_settings_profile(profile_data: UserProfileUpdate, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Atualizar perfil do usuário (endpoint alternativo)"""
     return await update_profile(profile_data, current_user, db)
 
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 @app.put("/settings/password")
 async def update_password(password_data: PasswordUpdate, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Alterar senha do usuário"""

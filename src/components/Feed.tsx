@@ -140,8 +140,11 @@ export const Feed: React.FC<FeedProps> = ({ user }) => {
     mediaData?: any,
     storyDuration?: number,
     backgroundColor?: string,
+<<<<<<< HEAD
     privacy?: string,
     overlays?: any[],
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
   ) => {
     try {
       const payload = {
@@ -150,8 +153,11 @@ export const Feed: React.FC<FeedProps> = ({ user }) => {
         media_url: mediaData?.url || null,
         duration_hours: storyDuration || 24,
         background_color: backgroundColor,
+<<<<<<< HEAD
         privacy: privacy || "public",
         overlays: overlays || [],
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
       };
 
       const response = await fetch("http://localhost:8000/stories/", {

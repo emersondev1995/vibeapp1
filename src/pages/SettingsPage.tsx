@@ -25,7 +25,10 @@ import {
   Check,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { NotificationModal } from "../components/modals/NotificationModal";
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
 interface User {
   id?: number;
@@ -63,12 +66,15 @@ export function SettingsPage({
   const [activeSection, setActiveSection] = useState("profile");
   const [loading, setLoading] = useState(false);
   const [saved, setSaved] = useState(false);
+<<<<<<< HEAD
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [notificationData, setNotificationData] = useState({
     type: "success" as "success" | "error" | "warning",
     title: "",
     message: "",
   });
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
   // Profile data
   const [profileData, setProfileData] = useState({
@@ -162,6 +168,7 @@ export function SettingsPage({
       if (response.ok) {
         setSaved(true);
         setTimeout(() => setSaved(false), 2000);
+<<<<<<< HEAD
 
         // Show success modal
         setNotificationData({
@@ -171,6 +178,8 @@ export function SettingsPage({
         });
         setShowNotificationModal(true);
 
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         if (onUserUpdate) {
           onUserUpdate({
             name: `${profileData.first_name} ${profileData.last_name}`,
@@ -190,6 +199,7 @@ export function SettingsPage({
       }
     } catch (error) {
       console.error("Erro ao salvar perfil:", error);
+<<<<<<< HEAD
 
       // Show error modal
       setNotificationData({
@@ -199,6 +209,8 @@ export function SettingsPage({
           "Erro ao salvar perfil. Verifique sua conexão e tente novamente.",
       });
       setShowNotificationModal(true);
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     } finally {
       setLoading(false);
     }
@@ -1004,6 +1016,7 @@ export function SettingsPage({
           </div>
         </div>
       </div>
+<<<<<<< HEAD
 
       {/* Notification Modal */}
       <NotificationModal
@@ -1013,6 +1026,8 @@ export function SettingsPage({
         title={notificationData.title}
         message={notificationData.message}
       />
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     </div>
   );
 }

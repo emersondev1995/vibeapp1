@@ -19,8 +19,11 @@ import { useNavigate } from "react-router-dom";
 import { PhotoEditor } from "../common/PhotoEditor";
 import { PhotoViewerModal } from "../modals/PhotoViewerModal";
 import { PhotoManagementModal } from "../modals/PhotoManagementModal";
+<<<<<<< HEAD
 import { NotificationModal } from "../modals/NotificationModal";
 import { API_BASE_URL } from "../../config/api";
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
 interface ProfileHeaderProps {
   user: {
@@ -70,6 +73,7 @@ export function ProfileHeader({
   const [photoManagementTab, setPhotoManagementTab] = useState<
     "profile" | "cover"
   >("profile");
+<<<<<<< HEAD
 
   // Notification modal state
   const [showNotificationModal, setShowNotificationModal] = useState(false);
@@ -78,6 +82,8 @@ export function ProfileHeader({
     title: "",
     message: "",
   });
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
   const avatarInputRef = useRef<HTMLInputElement>(null);
   const coverInputRef = useRef<HTMLInputElement>(null);
 
@@ -86,7 +92,11 @@ export function ProfileHeader({
     privacy: string = "public",
   ) => {
     try {
+<<<<<<< HEAD
       const response = await fetch(`${API_BASE_URL}/posts/`, {
+=======
+      const response = await fetch("http://localhost:8000/posts/", {
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +125,11 @@ export function ProfileHeader({
     privacy: string = "public",
   ) => {
     try {
+<<<<<<< HEAD
       const response = await fetch(`${API_BASE_URL}/posts/`, {
+=======
+      const response = await fetch("http://localhost:8000/posts/", {
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -142,7 +156,11 @@ export function ProfileHeader({
   const createProfilePhotoAlbumEntry = async (photoUrl: string) => {
     try {
       const response = await fetch(
+<<<<<<< HEAD
         `${API_BASE_URL}/albums/profile-photos/add`,
+=======
+        "http://localhost:8000/albums/profile-photos/add",
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         {
           method: "POST",
           headers: {
@@ -169,6 +187,7 @@ export function ProfileHeader({
 
   const createCoverPhotoAlbumEntry = async (photoUrl: string) => {
     try {
+<<<<<<< HEAD
       const response = await fetch(`${API_BASE_URL}/albums/cover-photos/add`, {
         method: "POST",
         headers: {
@@ -180,6 +199,22 @@ export function ProfileHeader({
           privacy: "public", // Cover photos are usually public
         }),
       });
+=======
+      const response = await fetch(
+        "http://localhost:8000/albums/cover-photos/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+          body: JSON.stringify({
+            photo_url: photoUrl,
+            privacy: "public", // Cover photos are usually public
+          }),
+        },
+      );
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
       if (!response.ok) {
         console.error("Erro ao adicionar foto ao álbum de fotos de capa");
@@ -197,7 +232,11 @@ export function ProfileHeader({
       const formData = new FormData();
       formData.append("file", file);
 
+<<<<<<< HEAD
       const response = await fetch(`${API_BASE_URL}/profile/avatar`, {
+=======
+      const response = await fetch("http://localhost:8000/profile/avatar", {
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         method: "POST",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -214,6 +253,7 @@ export function ProfileHeader({
         // Create a post about the profile photo update
         await createProfilePhotoPost(data.avatar_url, privacy);
 
+<<<<<<< HEAD
         // Show success modal
         setNotificationData({
           type: "success",
@@ -222,6 +262,8 @@ export function ProfileHeader({
         });
         setShowNotificationModal(true);
 
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         // Trigger a profile refresh
         if (onProfileUpdate) {
           onProfileUpdate();
@@ -234,6 +276,7 @@ export function ProfileHeader({
         }, 500);
       } else {
         const error = await response.json();
+<<<<<<< HEAD
         setNotificationData({
           type: "error",
           title: "Erro!",
@@ -252,6 +295,13 @@ export function ProfileHeader({
           "Erro de conexão ao enviar foto de perfil. Verifique sua internet e tente novamente.",
       });
       setShowNotificationModal(true);
+=======
+        alert(`Erro ao atualizar avatar: ${error.detail}`);
+      }
+    } catch (error) {
+      console.error("Erro ao enviar avatar:", error);
+      alert("Erro ao enviar avatar");
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     } finally {
       setIsUploadingAvatar(false);
     }
@@ -265,7 +315,11 @@ export function ProfileHeader({
       const formData = new FormData();
       formData.append("file", file);
 
+<<<<<<< HEAD
       const response = await fetch(`${API_BASE_URL}/profile/cover`, {
+=======
+      const response = await fetch("http://localhost:8000/profile/cover", {
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         method: "POST",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -282,6 +336,7 @@ export function ProfileHeader({
         // Create a post about the cover photo update
         await createCoverPhotoPost(data.cover_url, privacy);
 
+<<<<<<< HEAD
         // Show success modal
         setNotificationData({
           type: "success",
@@ -290,6 +345,8 @@ export function ProfileHeader({
         });
         setShowNotificationModal(true);
 
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         // Trigger a profile refresh
         if (onProfileUpdate) {
           onProfileUpdate();
@@ -302,6 +359,7 @@ export function ProfileHeader({
         }, 500);
       } else {
         const error = await response.json();
+<<<<<<< HEAD
         setNotificationData({
           type: "error",
           title: "Erro!",
@@ -319,6 +377,13 @@ export function ProfileHeader({
           "Erro de conexão ao enviar foto de capa. Verifique sua internet e tente novamente.",
       });
       setShowNotificationModal(true);
+=======
+        alert(`Erro ao atualizar foto de capa: ${error.detail}`);
+      }
+    } catch (error) {
+      console.error("Erro ao enviar foto de capa:", error);
+      alert("Erro ao enviar foto de capa");
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     } finally {
       setIsUploadingCover(false);
       setShowCoverUpload(false);
@@ -330,16 +395,21 @@ export function ProfileHeader({
     if (file) {
       // Validate file size (5MB max)
       if (file.size > 5 * 1024 * 1024) {
+<<<<<<< HEAD
         setNotificationData({
           type: "warning",
           title: "Arquivo muito grande!",
           message: "A imagem deve ter no máximo 5MB. Escolha uma imagem menor.",
         });
         setShowNotificationModal(true);
+=======
+        alert("A imagem deve ter no máximo 5MB");
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         return;
       }
       // Validate file type
       if (!file.type.startsWith("image/")) {
+<<<<<<< HEAD
         setNotificationData({
           type: "warning",
           title: "Formato inválido!",
@@ -347,6 +417,9 @@ export function ProfileHeader({
             "Por favor, selecione apenas arquivos de imagem (JPG, PNG, etc.).",
         });
         setShowNotificationModal(true);
+=======
+        alert("Por favor, selecione apenas arquivos de imagem");
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         return;
       }
       setSelectedFile(file);
@@ -359,6 +432,7 @@ export function ProfileHeader({
     if (file) {
       // Validate file size (10MB max)
       if (file.size > 10 * 1024 * 1024) {
+<<<<<<< HEAD
         setNotificationData({
           type: "warning",
           title: "Arquivo muito grande!",
@@ -366,10 +440,14 @@ export function ProfileHeader({
             "A foto de capa deve ter no máximo 10MB. Escolha uma imagem menor.",
         });
         setShowNotificationModal(true);
+=======
+        alert("A imagem deve ter no máximo 10MB");
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         return;
       }
       // Validate file type
       if (!file.type.startsWith("image/")) {
+<<<<<<< HEAD
         setNotificationData({
           type: "warning",
           title: "Formato inválido!",
@@ -377,6 +455,9 @@ export function ProfileHeader({
             "Por favor, selecione apenas arquivos de imagem (JPG, PNG, etc.).",
         });
         setShowNotificationModal(true);
+=======
+        alert("Por favor, selecione apenas arquivos de imagem");
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         return;
       }
       setSelectedFile(file);
@@ -716,7 +797,11 @@ export function ProfileHeader({
             id: user.id || 0,
             url: user.avatar.startsWith("http")
               ? user.avatar
+<<<<<<< HEAD
               : `${API_BASE_URL}${user.avatar}`,
+=======
+              : `http://localhost:8000${user.avatar}`,
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
             type: "profile",
             created_at: new Date().toISOString(),
             privacy: "public",
@@ -744,7 +829,11 @@ export function ProfileHeader({
             id: user.id || 0,
             url: user.cover_photo.startsWith("http")
               ? user.cover_photo
+<<<<<<< HEAD
               : `${API_BASE_URL}${user.cover_photo}`,
+=======
+              : `http://localhost:8000${user.cover_photo}`,
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
             type: "cover",
             created_at: new Date().toISOString(),
             privacy: "public",
@@ -778,6 +867,7 @@ export function ProfileHeader({
         onPhotoUpdated={onProfileUpdate || (() => {})}
         initialTab={photoManagementTab}
       />
+<<<<<<< HEAD
 
       {/* Notification Modal */}
       <NotificationModal
@@ -787,6 +877,8 @@ export function ProfileHeader({
         title={notificationData.title}
         message={notificationData.message}
       />
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     </div>
   );
 }

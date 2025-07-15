@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ModernCreateStoryModal } from "./ModernCreateStoryModal";
+<<<<<<< HEAD
 import { NewMobileStoryCreator } from "./NewMobileStoryCreator";
+=======
+import { MobileCreateStoryModal } from "./MobileCreateStoryModal";
+import { MobileStoryCreator } from "./MobileStoryCreator";
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
 interface ResponsiveCreateStoryModalProps {
   isOpen: boolean;
@@ -10,8 +15,11 @@ interface ResponsiveCreateStoryModalProps {
     mediaData?: any,
     storyDuration?: number,
     backgroundColor?: string,
+<<<<<<< HEAD
     privacy?: string,
     overlays?: any[],
+=======
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
   ) => void;
   userToken: string;
 }
@@ -60,12 +68,36 @@ export function ResponsiveCreateStoryModal({
   // Force mobile experience for very small screens
   const forceMinimalMobile = window.innerWidth <= 480;
 
+<<<<<<< HEAD
   if (isMobile || forceMinimalMobile) {
     return (
       <NewMobileStoryCreator
         isOpen={isOpen}
         onClose={onClose}
         onSubmit={onSubmit}
+=======
+  const handleMobileStorySubmit = (storyData: any) => {
+    onSubmit(
+      storyData.content,
+      {
+        textStyle: storyData.textStyle,
+        mentions: storyData.mentions,
+        hashtags: storyData.hashtags,
+        position: storyData.position,
+      },
+      24,
+      storyData.backgroundColor,
+    );
+  };
+
+  if (isMobile || forceMinimalMobile) {
+    return (
+      <MobileStoryCreator
+        isOpen={isOpen}
+        onClose={onClose}
+        onSubmit={handleMobileStorySubmit}
+        userToken={userToken}
+>>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
       />
     );
   }
