@@ -58,26 +58,14 @@ export function ResponsiveCreateStoryModal({
   }, []);
 
   // Force mobile experience for very small screens
-  const forceMinimalMobile = window.innerWidth <= 480;
+    const forceMinimalMobile = window.innerWidth <= 480;
 
-<<<<<<< HEAD
   if (isMobile || forceMinimalMobile) {
     return (
       <NewMobileStoryCreator
         isOpen={isOpen}
         onClose={onClose}
         onSubmit={onSubmit}
-=======
-  const handleMobileStorySubmit = (storyData: any) => {
-    onSubmit(
-      storyData.content,
-      {
-        textStyle: storyData.textStyle,
-        mentions: storyData.mentions,
-        hashtags: storyData.hashtags,
-        position: storyData.position,
-      },
-      24,
       storyData.backgroundColor,
     );
   };
