@@ -61,16 +61,7 @@ export function SettingsPage({
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("profile");
   const [loading, setLoading] = useState(false);
-  const [saved, setSaved] = useState(false);
-<<<<<<< HEAD
-  const [showNotificationModal, setShowNotificationModal] = useState(false);
-  const [notificationData, setNotificationData] = useState({
-    type: "success" as "success" | "error" | "warning",
-    title: "",
-    message: "",
-  });
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
+    const [saved, setSaved] = useState(false);
 
   // Profile data
   const [profileData, setProfileData] = useState({
