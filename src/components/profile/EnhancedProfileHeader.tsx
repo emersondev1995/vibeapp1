@@ -195,24 +195,17 @@ export function EnhancedProfileHeader({
           onProfileUpdate();
         }
       } else {
-        const errorData = await response.json();
-<<<<<<< HEAD
+                const errorData = await response.json();
         console.error("Avatar upload error:", errorData);
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         alert(
           `Erro ao enviar foto: ${errorData.detail || "Erro desconhecido"}`,
         );
       }
     } catch (error) {
-      console.error("Erro ao fazer upload da foto:", error);
-<<<<<<< HEAD
+            console.error("Erro ao fazer upload da foto:", error);
       alert(
         `Erro ao enviar foto: ${error instanceof Error ? error.message : "Erro desconhecido"}`,
       );
-=======
-      alert("Erro ao enviar foto");
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     } finally {
       setIsUploadingAvatar(false);
     }
