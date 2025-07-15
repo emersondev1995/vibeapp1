@@ -8,7 +8,7 @@ interface ResponsiveCreateStoryModalProps {
   onSubmit: (
     content: string,
     mediaData?: any,
-        storyDuration?: number,
+    storyDuration?: number,
     backgroundColor?: string,
     privacy?: string,
     overlays?: any[],
@@ -58,7 +58,7 @@ export function ResponsiveCreateStoryModal({
   }, []);
 
   // Force mobile experience for very small screens
-    const forceMinimalMobile = window.innerWidth <= 480;
+  const forceMinimalMobile = window.innerWidth <= 480;
 
   if (isMobile || forceMinimalMobile) {
     return (
@@ -66,18 +66,7 @@ export function ResponsiveCreateStoryModal({
         isOpen={isOpen}
         onClose={onClose}
         onSubmit={onSubmit}
-      storyData.backgroundColor,
-    );
-  };
-
-  if (isMobile || forceMinimalMobile) {
-    return (
-      <MobileStoryCreator
-        isOpen={isOpen}
-        onClose={onClose}
-        onSubmit={handleMobileStorySubmit}
         userToken={userToken}
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
       />
     );
   }
