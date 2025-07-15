@@ -173,19 +173,7 @@ export function SettingsPage({
         }
       }
     } catch (error) {
-      console.error("Erro ao salvar perfil:", error);
-<<<<<<< HEAD
-
-      // Show error modal
-      setNotificationData({
-        type: "error",
-        title: "Erro!",
-        message:
-          "Erro ao salvar perfil. Verifique sua conexão e tente novamente.",
-      });
-      setShowNotificationModal(true);
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
+            console.error("Erro ao salvar perfil:", error);
     } finally {
       setLoading(false);
     }
