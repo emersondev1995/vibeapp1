@@ -170,7 +170,7 @@ export function EnhancedProfileHeader({
 
     setIsUploadingAvatar(true);
 
-        const formData = new FormData();
+    const formData = new FormData();
     formData.append("avatar", file);
 
     try {
@@ -195,14 +195,14 @@ export function EnhancedProfileHeader({
           onProfileUpdate();
         }
       } else {
-                const errorData = await response.json();
+        const errorData = await response.json();
         console.error("Avatar upload error:", errorData);
         alert(
           `Erro ao enviar foto: ${errorData.detail || "Erro desconhecido"}`,
         );
       }
     } catch (error) {
-            console.error("Erro ao fazer upload da foto:", error);
+      console.error("Erro ao fazer upload da foto:", error);
       alert(
         `Erro ao enviar foto: ${error instanceof Error ? error.message : "Erro desconhecido"}`,
       );
@@ -220,11 +220,7 @@ export function EnhancedProfileHeader({
     setIsUploadingCover(true);
 
     const formData = new FormData();
-<<<<<<< HEAD
-    formData.append("file", file);
-=======
     formData.append("cover", file);
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
 
     try {
       const response = await fetch("http://localhost:8000/users/me/cover", {
@@ -241,23 +237,16 @@ export function EnhancedProfileHeader({
         }
       } else {
         const errorData = await response.json();
-<<<<<<< HEAD
         console.error("Cover upload error:", errorData);
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         alert(
           `Erro ao enviar capa: ${errorData.detail || "Erro desconhecido"}`,
         );
       }
     } catch (error) {
       console.error("Erro ao fazer upload da capa:", error);
-<<<<<<< HEAD
       alert(
         `Erro ao enviar capa: ${error instanceof Error ? error.message : "Erro desconhecido"}`,
       );
-=======
-      alert("Erro ao enviar capa");
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
     } finally {
       setIsUploadingCover(false);
       setShowCoverUpload(false);
