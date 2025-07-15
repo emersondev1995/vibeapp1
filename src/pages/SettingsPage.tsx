@@ -153,20 +153,8 @@ export function SettingsPage({
       });
 
       if (response.ok) {
-        setSaved(true);
+                setSaved(true);
         setTimeout(() => setSaved(false), 2000);
-<<<<<<< HEAD
-
-        // Show success modal
-        setNotificationData({
-          type: "success",
-          title: "Sucesso!",
-          message: "Suas informações de perfil foram atualizadas com sucesso.",
-        });
-        setShowNotificationModal(true);
-
-=======
->>>>>>> 9765b1b75ce40044bdfd03e22cb81063dca5ca92
         if (onUserUpdate) {
           onUserUpdate({
             name: `${profileData.first_name} ${profileData.last_name}`,
